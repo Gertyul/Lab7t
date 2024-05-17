@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.Json.Nodes;
 
@@ -94,6 +95,14 @@ public class MyList<T>
         }
 
         return sb.ToString();
+    }
+
+    public string this[int index]
+    {
+        get
+        {
+            return GetElement(index).Data.ToString();
+        }
     }
 
 }
@@ -223,17 +232,17 @@ internal class Program
     private static void Main(string[] args)
     {
 
-        //MyList<double> list = new MyList<double>(1);
+        MyList<double> list = new MyList<double>(1);
 
-        //list.AddElement(2);
-        //list.AddElement(3);
-        //list.AddElement(4);
-        //list.AddElement(5);
-        //list.AddElement(11);
-        //list.AddElement(12);
-        //list.AddElement(8);
-        //list.AddElement(9);
-        //list.AddElement(20);
+        list.AddElement(2);
+        list.AddElement(3);
+        list.AddElement(4);
+        list.AddElement(100);
+        list.AddElement(10);
+        list.AddElement(12);
+        list.AddElement(8);
+        list.AddElement(9);
+        list.AddElement(20);
 
 
 
@@ -246,8 +255,11 @@ internal class Program
         //}
 
 
-        //MyListOperations.RemoveBeforeMax(list);
-        //Console.WriteLine(list.ToString());
+        MyListOperations.RemoveBeforeMax(list);
+        for (int i = 0; i < list.Count; i++)
+        {
+            Console.WriteLine(list[i]);
+        }
 
 
     }
